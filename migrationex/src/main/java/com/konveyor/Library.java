@@ -4,7 +4,7 @@ package com.konveyor;
 import java.io.IOException;
 import java.util.*;
 import java.security.*;
-import sun.misc.BASE64Encoder;
+import java.util.Base64;
 import javax.servlet.http.HttpServletResponse;
 
 public class Library {
@@ -41,8 +41,7 @@ public class Library {
         try {
             MessageDigest md5Digest = MessageDigest.getInstance("MD5"); 
             byte[] hash = md5Digest.digest(input.getBytes());
-            BASE64Encoder encoder = new BASE64Encoder(); 
-            return encoder.encode(hash);
+            return Base64.getEncoder().encodeToString(hash);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
